@@ -1,0 +1,32 @@
+﻿<Window x:Class="BankManagementSystem.AddStaff"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AddStaff" WindowStartupLocation="CenterScreen" Height="400" Width="340">
+    <Grid Margin="0,0,2,-9">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF382AC9" Offset="0"/>
+                <GradientStop Color="#FFD6F1D0" Offset="1.334"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Canvas Name="Add" HorizontalAlignment="Right" Height="369" VerticalAlignment="Top" Width="330">
+            <Label Content="职员编号：" Canvas.Left="35" Canvas.Top="22"/>
+            <Label Content="职员姓名：" Canvas.Left="35" Canvas.Top="59" Height="29"/>
+            <Label Content="性别：" Canvas.Left="49" Canvas.Top="142"/>
+            <Label Content="证件号码：" Canvas.Left="35" Canvas.Top="179" RenderTransformOrigin="0.5,0.5"/>
+            <Label Content="工资：" Canvas.Left="49" Canvas.Top="219"/>
+            <Label Content="联系方式：" Canvas.Left="35" Canvas.Top="261"/>
+            <TextBox Height="23" Name="Id" Canvas.Left="130" TextWrapping="Wrap"  Canvas.Top="25" Width="137"/>
+            <TextBox Height="23" Name="stName" Canvas.Left="130" TextWrapping="Wrap" Canvas.Top="65" Width="137"/>
+            <TextBox Height="23" Name="Sex" Canvas.Left="130" TextWrapping="Wrap"  Canvas.Top="142" Width="137"/>
+            <TextBox Height="23" Name="IdCard" Canvas.Left="130" TextWrapping="Wrap" Canvas.Top="182" Width="137"/>
+            <TextBox Height="23" Name="Wage" Canvas.Left="130" TextWrapping="Wrap" Canvas.Top="222" Width="137"/>
+            <TextBox Height="23" Name="Conn" Canvas.Left="130" TextWrapping="Wrap" Canvas.Top="264" Width="137"/>
+            <Button Content="确定" Click ="b1_Click" Canvas.Left="62" Canvas.Top="305" Width="66"/>
+            <Button Content="取消"  Click ="b2_Click" Canvas.Left="190" Canvas.Top="305" Width="66"/>
+            <PasswordBox Name="pass" Canvas.Left="130" Canvas.Top="102" Width="137" Height="23"/>
+            <Label Content="密码：" Canvas.Left="45" Canvas.Top="102"/>
+        </Canvas>
+        
+    </Grid>
+</Window>

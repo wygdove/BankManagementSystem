@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BMS_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="EmployeeInfo">
+    <Key>
+      <PropertyRef Name="EId" />
+    </Key>
+    <Property Name="EId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EPassword" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="EName" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="ESex" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Name="EIdCardNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="EPhone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+    <Property Name="ESalary" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="EDepartment" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="OperateRecordInfo">
+    <Key>
+      <PropertyRef Name="OId" />
+    </Key>
+    <Property Name="OId" Type="Int32" Nullable="false" />
+    <Property Name="OAccountNumber" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="OTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OType" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OAccountChange" Type="Double" Nullable="false" />
+    <Property Name="AccountRemaining" Type="Double" Nullable="false" />
+    <NavigationProperty Name="UserAccountInfo" Relationship="Self.FK__OperateRe__OAcco__36B12243" FromRole="OperateRecordInfo" ToRole="UserAccountInfo" />
+  </EntityType>
+  <EntityType Name="RateInfo">
+    <Key>
+      <PropertyRef Name="DepositId" />
+    </Key>
+    <Property Name="DepositId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DepositType" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Rate" Type="Double" />
+    <NavigationProperty Name="UserAccountInfoes" Relationship="Self.FK__UserAccou__Depos__5AEE82B9" FromRole="RateInfo" ToRole="UserAccountInfo" />
+  </EntityType>
+  <EntityType Name="UserAccountInfo">
+    <Key>
+      <PropertyRef Name="UAccountNumber" />
+    </Key>
+    <Property Name="UAccountNumber" Type="String" MaxLength="6" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="UName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="USex" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="UIdCardNumber" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="UPhone" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+    <Property Name="UAccountDate" Type="DateTime" Precision="3" />
+    <Property Name="UAccountPassword" Type="String" MaxLength="6" FixedLength="true" Unicode="false" />
+    <Property Name="Balance" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DepositId" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="LoanType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="Statement" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="OperateRecordInfoes" Relationship="Self.FK__OperateRe__OAcco__36B12243" FromRole="UserAccountInfo" ToRole="OperateRecordInfo" />
+    <NavigationProperty Name="RateInfo" Relationship="Self.FK__UserAccou__Depos__5AEE82B9" FromRole="UserAccountInfo" ToRole="RateInfo" />
+    <NavigationProperty Name="BusinessLoanInfoes" Relationship="BMS_DBModel.FK__BusinessL__BlAcc__18EBB532" FromRole="UserAccountInfo" ToRole="BusinessLoanInfo" />
+    <NavigationProperty Name="StudentLoanInfoes" Relationship="BMS_DBModel.FK__StudentLo__SlAcc__17F790F9" FromRole="UserAccountInfo" ToRole="StudentLoanInfo" />
+    <NavigationProperty Name="PersonalLoanInfoes" Relationship="BMS_DBModel.FK__PersonalL__PlAcc__3A4CA8FD" FromRole="UserAccountInfo" ToRole="PersonalLoanInfo" />
+  </EntityType>
+  <Association Name="FK__OperateRe__OAcco__36B12243">
+    <End Role="UserAccountInfo" Type="Self.UserAccountInfo" Multiplicity="1" />
+    <End Role="OperateRecordInfo" Type="Self.OperateRecordInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccountInfo">
+        <PropertyRef Name="UAccountNumber" />
+      </Principal>
+      <Dependent Role="OperateRecordInfo">
+        <PropertyRef Name="OAccountNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserAccou__Depos__5AEE82B9">
+    <End Role="RateInfo" Type="Self.RateInfo" Multiplicity="0..1" />
+    <End Role="UserAccountInfo" Type="Self.UserAccountInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RateInfo">
+        <PropertyRef Name="DepositId" />
+      </Principal>
+      <Dependent Role="UserAccountInfo">
+        <PropertyRef Name="DepositId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BMS_DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EmployeeInfoes" EntityType="Self.EmployeeInfo" />
+    <EntitySet Name="OperateRecordInfoes" EntityType="Self.OperateRecordInfo" />
+    <EntitySet Name="RateInfoes" EntityType="Self.RateInfo" />
+    <EntitySet Name="UserAccountInfoes" EntityType="Self.UserAccountInfo" />
+    <AssociationSet Name="FK__OperateRe__OAcco__36B12243" Association="Self.FK__OperateRe__OAcco__36B12243">
+      <End Role="UserAccountInfo" EntitySet="UserAccountInfoes" />
+      <End Role="OperateRecordInfo" EntitySet="OperateRecordInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserAccou__Depos__5AEE82B9" Association="Self.FK__UserAccou__Depos__5AEE82B9">
+      <End Role="RateInfo" EntitySet="RateInfoes" />
+      <End Role="UserAccountInfo" EntitySet="UserAccountInfoes" />
+    </AssociationSet>
+    <EntitySet Name="BusinessLoanInfoes" EntityType="BMS_DBModel.BusinessLoanInfo" />
+    <EntitySet Name="StudentLoanInfoes" EntityType="BMS_DBModel.StudentLoanInfo" />
+    <AssociationSet Name="FK__BusinessL__BlAcc__18EBB532" Association="BMS_DBModel.FK__BusinessL__BlAcc__18EBB532">
+      <End Role="UserAccountInfo" EntitySet="UserAccountInfoes" />
+      <End Role="BusinessLoanInfo" EntitySet="BusinessLoanInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentLo__SlAcc__17F790F9" Association="BMS_DBModel.FK__StudentLo__SlAcc__17F790F9">
+      <End Role="UserAccountInfo" EntitySet="UserAccountInfoes" />
+      <End Role="StudentLoanInfo" EntitySet="StudentLoanInfoes" />
+    </AssociationSet>
+    <EntitySet Name="PersonalLoanInfoes" EntityType="BMS_DBModel.PersonalLoanInfo" />
+    <AssociationSet Name="FK__PersonalL__PlAcc__3A4CA8FD" Association="BMS_DBModel.FK__PersonalL__PlAcc__3A4CA8FD">
+      <End Role="UserAccountInfo" EntitySet="UserAccountInfoes" />
+      <End Role="PersonalLoanInfo" EntitySet="PersonalLoanInfoes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BusinessLoanInfo">
+    <Key>
+      <PropertyRef Name="BlId" />
+    </Key>
+    <Property Name="BlId" Type="Int32" Nullable="false" />
+    <Property Name="BlAccountNumber" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Name="BlCompany" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="BlCompanyLoaction" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BlCompanyAsset" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="UserAccountInfo" Relationship="BMS_DBModel.FK__BusinessL__BlAcc__18EBB532" FromRole="BusinessLoanInfo" ToRole="UserAccountInfo" />
+  </EntityType>
+  <EntityType Name="StudentLoanInfo">
+    <Key>
+      <PropertyRef Name="SlId" />
+    </Key>
+    <Property Name="SlId" Type="Int32" Nullable="false" />
+    <Property Name="SlAccountNumber" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Name="SlSchool" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SlInstitute" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="SlProfession" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserAccountInfo" Relationship="BMS_DBModel.FK__StudentLo__SlAcc__17F790F9" FromRole="StudentLoanInfo" ToRole="UserAccountInfo" />
+  </EntityType>
+  <Association Name="FK__BusinessL__BlAcc__18EBB532">
+    <End Type="BMS_DBModel.UserAccountInfo" Role="UserAccountInfo" Multiplicity="0..1" />
+    <End Type="BMS_DBModel.BusinessLoanInfo" Role="BusinessLoanInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccountInfo">
+        <PropertyRef Name="UAccountNumber" />
+      </Principal>
+      <Dependent Role="BusinessLoanInfo">
+        <PropertyRef Name="BlAccountNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentLo__SlAcc__17F790F9">
+    <End Type="BMS_DBModel.UserAccountInfo" Role="UserAccountInfo" Multiplicity="0..1" />
+    <End Type="BMS_DBModel.StudentLoanInfo" Role="StudentLoanInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccountInfo">
+        <PropertyRef Name="UAccountNumber" />
+      </Principal>
+      <Dependent Role="StudentLoanInfo">
+        <PropertyRef Name="SlAccountNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PersonalLoanInfo">
+    <Key>
+      <PropertyRef Name="PlId" />
+    </Key>
+    <Property Name="PlId" Type="Int32" Nullable="false" />
+    <Property Name="PlAccountNumber" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Name="PlWork" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="PlSalary" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="UserAccountInfo" Relationship="BMS_DBModel.FK__PersonalL__PlAcc__3A4CA8FD" FromRole="PersonalLoanInfo" ToRole="UserAccountInfo" />
+  </EntityType>
+  <Association Name="FK__PersonalL__PlAcc__3A4CA8FD">
+    <End Type="BMS_DBModel.UserAccountInfo" Role="UserAccountInfo" Multiplicity="0..1" />
+    <End Type="BMS_DBModel.PersonalLoanInfo" Role="PersonalLoanInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccountInfo">
+        <PropertyRef Name="UAccountNumber" />
+      </Principal>
+      <Dependent Role="PersonalLoanInfo">
+        <PropertyRef Name="PlAccountNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

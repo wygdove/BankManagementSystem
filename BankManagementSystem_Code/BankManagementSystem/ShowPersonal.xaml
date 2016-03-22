@@ -1,0 +1,18 @@
+﻿<Page x:Class="BankManagementSystem.ShowPersonal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ShowPersonal" Height="500" Width="610">
+    <Grid>
+
+        <DataGrid Name="data" HorizontalAlignment="Left" VerticalAlignment="Top" Height="500" Width="610">
+            <DataGrid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF382AC9" Offset="0"/>
+                    <GradientStop Color="#FFD6F1D0" Offset="1.334"/>
+                </LinearGradientBrush>
+            </DataGrid.Background>
+        </DataGrid>
+        <Button Content="申请贷款" FontSize="18" HorizontalAlignment="Left" Margin="250,400,0,0" VerticalAlignment="Top" Width="99" Height="39" Click="Button_Click"/>
+
+    </Grid>
+</Page>

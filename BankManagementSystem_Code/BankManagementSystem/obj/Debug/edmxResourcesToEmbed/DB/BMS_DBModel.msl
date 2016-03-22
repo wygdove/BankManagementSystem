@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BMS_DBModelStoreContainer" CdmEntityContainer="BMS_DBEntities">
+    <EntitySetMapping Name="EmployeeInfoes">
+      <EntityTypeMapping TypeName="BMS_DBModel.EmployeeInfo">
+        <MappingFragment StoreEntitySet="EmployeeInfo">
+          <ScalarProperty Name="EId" ColumnName="EId" />
+          <ScalarProperty Name="EPassword" ColumnName="EPassword" />
+          <ScalarProperty Name="EName" ColumnName="EName" />
+          <ScalarProperty Name="ESex" ColumnName="ESex" />
+          <ScalarProperty Name="EIdCardNumber" ColumnName="EIdCardNumber" />
+          <ScalarProperty Name="EPhone" ColumnName="EPhone" />
+          <ScalarProperty Name="ESalary" ColumnName="ESalary" />
+          <ScalarProperty Name="EDepartment" ColumnName="EDepartment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OperateRecordInfoes">
+      <EntityTypeMapping TypeName="BMS_DBModel.OperateRecordInfo">
+        <MappingFragment StoreEntitySet="OperateRecordInfo">
+          <ScalarProperty Name="OId" ColumnName="OId" />
+          <ScalarProperty Name="OAccountNumber" ColumnName="OAccountNumber" />
+          <ScalarProperty Name="OTime" ColumnName="OTime" />
+          <ScalarProperty Name="OType" ColumnName="OType" />
+          <ScalarProperty Name="OAccountChange" ColumnName="OAccountChange" />
+          <ScalarProperty Name="AccountRemaining" ColumnName="AccountRemaining" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RateInfoes">
+      <EntityTypeMapping TypeName="BMS_DBModel.RateInfo">
+        <MappingFragment StoreEntitySet="RateInfo">
+          <ScalarProperty Name="DepositId" ColumnName="DepositId" />
+          <ScalarProperty Name="DepositType" ColumnName="DepositType" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserAccountInfoes">
+      <EntityTypeMapping TypeName="BMS_DBModel.UserAccountInfo">
+        <MappingFragment StoreEntitySet="UserAccountInfo">
+          <ScalarProperty Name="UAccountNumber" ColumnName="UAccountNumber" />
+          <ScalarProperty Name="UName" ColumnName="UName" />
+          <ScalarProperty Name="USex" ColumnName="USex" />
+          <ScalarProperty Name="UIdCardNumber" ColumnName="UIdCardNumber" />
+          <ScalarProperty Name="UPhone" ColumnName="UPhone" />
+          <ScalarProperty Name="UAccountDate" ColumnName="UAccountDate" />
+          <ScalarProperty Name="UAccountPassword" ColumnName="UAccountPassword" />
+          <ScalarProperty Name="Balance" ColumnName="Balance" />
+          <ScalarProperty Name="DepositId" ColumnName="DepositId" />
+          <ScalarProperty Name="LoanType" ColumnName="LoanType" />
+          <ScalarProperty Name="Statement" ColumnName="Statement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BusinessLoanInfoes">
+      <EntityTypeMapping TypeName="BMS_DBModel.BusinessLoanInfo">
+        <MappingFragment StoreEntitySet="BusinessLoanInfo">
+          <ScalarProperty Name="BlCompanyAsset" ColumnName="BlCompanyAsset" />
+          <ScalarProperty Name="BlCompanyLoaction" ColumnName="BlCompanyLoaction" />
+          <ScalarProperty Name="BlCompany" ColumnName="BlCompany" />
+          <ScalarProperty Name="BlAccountNumber" ColumnName="BlAccountNumber" />
+          <ScalarProperty Name="BlId" ColumnName="BlId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentLoanInfoes">
+      <EntityTypeMapping TypeName="BMS_DBModel.StudentLoanInfo">
+        <MappingFragment StoreEntitySet="StudentLoanInfo">
+          <ScalarProperty Name="SlProfession" ColumnName="SlProfession" />
+          <ScalarProperty Name="SlInstitute" ColumnName="SlInstitute" />
+          <ScalarProperty Name="SlSchool" ColumnName="SlSchool" />
+          <ScalarProperty Name="SlAccountNumber" ColumnName="SlAccountNumber" />
+          <ScalarProperty Name="SlId" ColumnName="SlId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonalLoanInfoes">
+      <EntityTypeMapping TypeName="BMS_DBModel.PersonalLoanInfo">
+        <MappingFragment StoreEntitySet="PersonalLoanInfo">
+          <ScalarProperty Name="PlSalary" ColumnName="PlSalary" />
+          <ScalarProperty Name="PlWork" ColumnName="PlWork" />
+          <ScalarProperty Name="PlAccountNumber" ColumnName="PlAccountNumber" />
+          <ScalarProperty Name="PlId" ColumnName="PlId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

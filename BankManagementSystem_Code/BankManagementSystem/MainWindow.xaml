@@ -1,0 +1,220 @@
+﻿<Window x:Class="BankManagementSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Main" Height="575" Width="1000" WindowStartupLocation="CenterScreen" >
+    <DockPanel>
+        <DockPanel.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF382AC9" Offset="0"/>
+                <GradientStop Color="#FFD6F1D0" Offset="1.334"/>
+            </LinearGradientBrush>
+        </DockPanel.Background>
+        <StackPanel  Height="Auto" OpacityMask="{DynamicResource {x:Static SystemColors.WindowBrushKey}}" Margin="0" Width="205">
+            <TextBlock FontSize="30" Height="40" FontWeight="Bold" Foreground="#FFFDFCFC" VerticalAlignment="Center" TextAlignment="Center" FontStyle="Italic" Background="#FF1429B0"><Run Text="银行管理系统"/></TextBlock>
+            <Image Height="458" Source="11.JPG"  Stretch="Fill"/>
+            <TextBlock TextWrapping="Wrap" Text="制作人：卫艳鸽，陈欣欣，巩令钦，窦金峰，宋万莹" Height="53"/>
+            <Image Height="528" Margin="0,0,-183,0" Source="11.JPG" Stretch="Fill"/>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel DockPanel.Dock="Left" Width="120"  >
+                <StackPanel.Resources>
+                    <Style TargetType="Button">
+                        <Setter Property="Margin" Value="10 10 10 0" />
+                    </Style>
+                </StackPanel.Resources>
+                <Expander Header="存款取款" ExpandDirection="Down" Foreground="#FFEEE7E7" IsExpanded="False" >
+                    <!--??????????????????????expand Height="130"-->
+                    <StackPanel>
+                        <Button Height="25" Width="60" Tag="newAccount.xaml" Click="Button_Click" Margin="29,10,29,0">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                    <GradientStop Color="#FF1BCF9E" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="开户" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Height="25" Width="60" Tag="Deposit.xaml" Click="Button_Click" Margin="29,10,29,0">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                    <GradientStop Color="#FF26CFA1" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="存款" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Height="25" Width="60" Tag="Withdraw.xaml" Click="Button_Click" Margin="29,10,29,0">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                    <GradientStop Color="#FF22C599" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="取款" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="汇总查询" Foreground="#FFEEE7E7">
+                    <StackPanel Height="68">
+                        <Button Height="25" Width="60" Tag="OperateRecord.xaml" Click="Button_Click" Margin="29,10,29,0">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                    <GradientStop Color="#FF2ED3BC" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="汇总查询" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Height="25" Width="60" Tag="TotalQuery.xaml" Click="Button_Click" Margin="29,10,29,0">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                    <GradientStop Color="#FF29CFB8" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="存款查询" VerticalAlignment="Center" Width="56" RenderTransformOrigin="0.481,-0.773" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="职员管理" Foreground="#FFEEE7E7">
+                    <StackPanel>
+                        <Button Height="25" Width="60" Tag="StaffManagement.xaml" Click="Button_Click" Margin="29,10,29,0">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                    <GradientStop Color="#FF3AB3BF" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="职员管理" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Height="25" Width="60" Tag="WageAdjustment.xaml" Click="Button_Click" Margin="29,10,29,0">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                    <GradientStop Color="#FF36CF9E" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="调整工资" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="利率设置" Foreground="#FFEEE7E7">
+                    <Button Height="25" Width="60" Tag="ratePage.xaml" Click="Button_Click">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                <GradientStop Color="#FF1FB2AB" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="利率设置" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Expander>
+                <Expander Header="其他功能" Foreground="#FFEEE7E7">
+                    <StackPanel>
+                        <Button Height="25" Width="90" Tag="ChangeEmployeePass.xaml" Click="Button_Click" >
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                    <GradientStop Color="#FF3ACFC1" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                            <StackPanel >
+                                <TextBlock Text="操作员密码修改" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Height="25" Width="90" Tag="ChangeAccountPass.xaml" Click="Button_Click">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                    <GradientStop Color="#FF3ACFC1" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                            <StackPanel >
+                                <TextBlock Text="账户密码修改" VerticalAlignment="Center" />
+                            </StackPanel>
+                        </Button>
+                        <Button Height="25" Width="90" Tag="ChargeAccount.xaml" Click="Button_Click" Margin="14,10,14,0">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                    <GradientStop Color="#FF2BAA9E" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                            <StackPanel >
+                                <TextBlock Text="银行卡服务" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Height="25" Width="90" Tag="Loan.xaml" Click="Button_Click" Margin="14,10,14,0">
+                            <Button.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                    <GradientStop Color="#FF2BAA9E" Offset="1"/>
+                                </LinearGradientBrush>
+                            </Button.Background>
+                            <StackPanel >
+                                <TextBlock Text="扩展功能" VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </Expander>
+                <Expander Header="系统帮助" Foreground="#FFEEE7E7">
+                    <Button Height="25" Width="60"  Tag="help.xaml" Click="Button_Click">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                                <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                                <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                                <GradientStop Color="#FF1FB2AB" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="系统帮助" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </Expander>
+            </StackPanel>
+        </ScrollViewer>
+        <Frame Name="frame1" Margin=" 5 20 40 20" BorderThickness="2" BorderBrush="#FFA6C9FD" NavigationUIVisibility="Hidden" />
+    </DockPanel>
+</Window>

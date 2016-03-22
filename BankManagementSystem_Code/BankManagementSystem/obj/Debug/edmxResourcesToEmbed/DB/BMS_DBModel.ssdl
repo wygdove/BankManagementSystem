@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BMS_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BusinessLoanInfo">
+    <Key>
+      <PropertyRef Name="BlId" />
+    </Key>
+    <Property Name="BlId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BlAccountNumber" Type="nchar" MaxLength="6" />
+    <Property Name="BlCompany" Type="nvarchar" MaxLength="30" />
+    <Property Name="BlCompanyLoaction" Type="nvarchar" MaxLength="50" />
+    <Property Name="BlCompanyAsset" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="EmployeeInfo">
+    <Key>
+      <PropertyRef Name="EId" />
+    </Key>
+    <Property Name="EId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="EPassword" Type="char" MaxLength="6" />
+    <Property Name="EName" Type="nvarchar" MaxLength="5" />
+    <Property Name="ESex" Type="char" MaxLength="8" />
+    <Property Name="EIdCardNumber" Type="nvarchar" MaxLength="6" />
+    <Property Name="EPhone" Type="nchar" MaxLength="11" />
+    <Property Name="ESalary" Type="money" />
+    <Property Name="EDepartment" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="OperateRecordInfo">
+    <Key>
+      <PropertyRef Name="OId" />
+    </Key>
+    <Property Name="OId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OAccountNumber" Type="nchar" MaxLength="6" Nullable="false" />
+    <Property Name="OTime" Type="datetime" Nullable="false" />
+    <Property Name="OType" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="OAccountChange" Type="float" Nullable="false" />
+    <Property Name="AccountRemaining" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonalLoanInfo">
+    <Key>
+      <PropertyRef Name="PlId" />
+    </Key>
+    <Property Name="PlId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PlAccountNumber" Type="nchar" MaxLength="6" />
+    <Property Name="PlWork" Type="nvarchar" MaxLength="30" />
+    <Property Name="PlSalary" Type="money" />
+  </EntityType>
+  <EntityType Name="RateInfo">
+    <Key>
+      <PropertyRef Name="DepositId" />
+    </Key>
+    <Property Name="DepositId" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="DepositType" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Rate" Type="float" />
+  </EntityType>
+  <EntityType Name="StudentLoanInfo">
+    <Key>
+      <PropertyRef Name="SlId" />
+    </Key>
+    <Property Name="SlId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SlAccountNumber" Type="nchar" MaxLength="6" />
+    <Property Name="SlSchool" Type="nvarchar" MaxLength="30" />
+    <Property Name="SlInstitute" Type="nvarchar" MaxLength="30" />
+    <Property Name="SlProfession" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="UserAccountInfo">
+    <Key>
+      <PropertyRef Name="UAccountNumber" />
+    </Key>
+    <Property Name="UAccountNumber" Type="nchar" MaxLength="6" Nullable="false" />
+    <Property Name="UName" Type="nvarchar" MaxLength="50" />
+    <Property Name="USex" Type="nvarchar" MaxLength="8" />
+    <Property Name="UIdCardNumber" Type="nvarchar" MaxLength="6" />
+    <Property Name="UPhone" Type="nchar" MaxLength="11" />
+    <Property Name="UAccountDate" Type="datetime" />
+    <Property Name="UAccountPassword" Type="char" MaxLength="6" />
+    <Property Name="Balance" Type="money" />
+    <Property Name="DepositId" Type="nvarchar" MaxLength="10" />
+    <Property Name="LoanType" Type="nvarchar" MaxLength="10" />
+    <Property Name="Statement" Type="nvarchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK__BusinessL__BlAcc__662B2B3B">
+    <End Role="UserAccountInfo" Type="Self.UserAccountInfo" Multiplicity="0..1" />
+    <End Role="BusinessLoanInfo" Type="Self.BusinessLoanInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccountInfo">
+        <PropertyRef Name="UAccountNumber" />
+      </Principal>
+      <Dependent Role="BusinessLoanInfo">
+        <PropertyRef Name="BlAccountNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OperateRe__OAcco__4F47C5E3">
+    <End Role="UserAccountInfo" Type="Self.UserAccountInfo" Multiplicity="1" />
+    <End Role="OperateRecordInfo" Type="Self.OperateRecordInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccountInfo">
+        <PropertyRef Name="UAccountNumber" />
+      </Principal>
+      <Dependent Role="OperateRecordInfo">
+        <PropertyRef Name="OAccountNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PersonalL__PlAcc__671F4F74">
+    <End Role="UserAccountInfo" Type="Self.UserAccountInfo" Multiplicity="0..1" />
+    <End Role="PersonalLoanInfo" Type="Self.PersonalLoanInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccountInfo">
+        <PropertyRef Name="UAccountNumber" />
+      </Principal>
+      <Dependent Role="PersonalLoanInfo">
+        <PropertyRef Name="PlAccountNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentLo__SlAcc__681373AD">
+    <End Role="UserAccountInfo" Type="Self.UserAccountInfo" Multiplicity="0..1" />
+    <End Role="StudentLoanInfo" Type="Self.StudentLoanInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserAccountInfo">
+        <PropertyRef Name="UAccountNumber" />
+      </Principal>
+      <Dependent Role="StudentLoanInfo">
+        <PropertyRef Name="SlAccountNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserAccou__Depos__778AC167">
+    <End Role="RateInfo" Type="Self.RateInfo" Multiplicity="0..1" />
+    <End Role="UserAccountInfo" Type="Self.UserAccountInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RateInfo">
+        <PropertyRef Name="DepositId" />
+      </Principal>
+      <Dependent Role="UserAccountInfo">
+        <PropertyRef Name="DepositId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BMS_DBModelStoreContainer">
+    <EntitySet Name="BusinessLoanInfo" EntityType="Self.BusinessLoanInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeeInfo" EntityType="Self.EmployeeInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OperateRecordInfo" EntityType="Self.OperateRecordInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PersonalLoanInfo" EntityType="Self.PersonalLoanInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RateInfo" EntityType="Self.RateInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentLoanInfo" EntityType="Self.StudentLoanInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserAccountInfo" EntityType="Self.UserAccountInfo" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__BusinessL__BlAcc__662B2B3B" Association="Self.FK__BusinessL__BlAcc__662B2B3B">
+      <End Role="UserAccountInfo" EntitySet="UserAccountInfo" />
+      <End Role="BusinessLoanInfo" EntitySet="BusinessLoanInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OperateRe__OAcco__4F47C5E3" Association="Self.FK__OperateRe__OAcco__4F47C5E3">
+      <End Role="UserAccountInfo" EntitySet="UserAccountInfo" />
+      <End Role="OperateRecordInfo" EntitySet="OperateRecordInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PersonalL__PlAcc__671F4F74" Association="Self.FK__PersonalL__PlAcc__671F4F74">
+      <End Role="UserAccountInfo" EntitySet="UserAccountInfo" />
+      <End Role="PersonalLoanInfo" EntitySet="PersonalLoanInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentLo__SlAcc__681373AD" Association="Self.FK__StudentLo__SlAcc__681373AD">
+      <End Role="UserAccountInfo" EntitySet="UserAccountInfo" />
+      <End Role="StudentLoanInfo" EntitySet="StudentLoanInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserAccou__Depos__778AC167" Association="Self.FK__UserAccou__Depos__778AC167">
+      <End Role="RateInfo" EntitySet="RateInfo" />
+      <End Role="UserAccountInfo" EntitySet="UserAccountInfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
